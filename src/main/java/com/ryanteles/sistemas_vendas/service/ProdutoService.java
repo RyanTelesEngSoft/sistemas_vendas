@@ -29,4 +29,26 @@ public class ProdutoService {
       return produtoRepository.findById(id);
 
     }
+    public void deletarPorId (Long id){
+       Optional<Produto> produto = produtoRepository.findById(id);
+        if (produto.isPresent()){
+            produtoRepository.deleteById(id);
+        }
+    }
+
+    public Produto atualizar (Long id, Produto produtoAtualizado){
+        Optional<Produto> produto = produtoRepository.findById(id);
+        if (produto.isPresent()){
+            Produto produtoExistente = produto.get();
+            produtoExistente.setNome(produtoAtualizado.getNome());
+            produtoExistente.setDescricao(produtoAtualizado.getDescricao());
+            produtoExistente.setPreco(produtoAtualizado.getPreco());
+            produtoExistente.setEstoque(produtoAtualizado.getEstoque());
+            return produtoRepository.save(produtoExistente);
+        }
+
+        return null;
+    }
+
+
 }

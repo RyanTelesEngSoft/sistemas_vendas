@@ -5,6 +5,7 @@ import com.ryanteles.sistemas_vendas.service.ProdutoService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/produtos")
@@ -18,6 +19,7 @@ public class ProdutoController {
 
     @GetMapping
     public List<Produto> listar(){
+
         return produtoService.listarTodos();
     }
 
@@ -27,4 +29,20 @@ public class ProdutoController {
         return "Produto Cadastrado!";
     }
 
+    @GetMapping("/{id}")
+    public Optional<Produto> buscarPorId (@PathVariable Long id){
+           return produtoService.buscarPorId(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public String deletar(@PathVariable Long id){
+        produtoService.deletarPorId(id);
+        return "Produto deletado!";
+    }
+
+    @PutMapping("/{id}")
+    public String atualizar(@PathVariable Long id, @RequestBody Produto produtoAtualizado){
+        produtoService.atualizar(id, produtoAtualizado);
+        return "Produto Atualizado!";
+    }
 }
