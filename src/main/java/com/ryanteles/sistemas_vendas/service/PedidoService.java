@@ -4,6 +4,7 @@ import com.ryanteles.sistemas_vendas.entity.Pedido;
 import com.ryanteles.sistemas_vendas.repository.PedidoRepository;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,6 +26,7 @@ public class PedidoService {
     }
 
     public Pedido salvar (Pedido pedido){
+        pedido.setValorTotal(BigDecimal.ZERO);
         return pedidoRepository.save(pedido);
     }
 
