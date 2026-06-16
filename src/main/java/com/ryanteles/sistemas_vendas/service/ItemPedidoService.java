@@ -2,6 +2,7 @@ package com.ryanteles.sistemas_vendas.service;
 
 import com.ryanteles.sistemas_vendas.entity.ItemPedido;
 import com.ryanteles.sistemas_vendas.repository.ItemPedidoRepository;
+import com.ryanteles.sistemas_vendas.repository.PedidoRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,9 +12,11 @@ import java.util.Optional;
 public class ItemPedidoService {
 
     private final ItemPedidoRepository itemPedidoRepository;
+    private final PedidoRepository pedidoRepository;
 
-    public ItemPedidoService(ItemPedidoRepository itemPedidoRepository) {
+    public ItemPedidoService(ItemPedidoRepository itemPedidoRepository, PedidoRepository pedidoRepository) {
         this.itemPedidoRepository = itemPedidoRepository;
+        this.pedidoRepository = pedidoRepository;
     }
 
     public List<ItemPedido> listar(){
