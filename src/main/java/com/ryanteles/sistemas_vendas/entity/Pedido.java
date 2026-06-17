@@ -1,5 +1,6 @@
 package com.ryanteles.sistemas_vendas.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -33,5 +34,6 @@ public class Pedido {
     private Cliente cliente;
 
     @OneToMany(mappedBy = "pedido")
+    @JsonManagedReference
     private List<ItemPedido> itens;
 }

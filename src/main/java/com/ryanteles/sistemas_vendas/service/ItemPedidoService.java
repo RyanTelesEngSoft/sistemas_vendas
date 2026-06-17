@@ -34,8 +34,8 @@ public class ItemPedidoService {
     }
 
     public ItemPedido salvar (ItemPedido itemPedido){
-        Pedido pedido = itemPedido.getPedido();
-        Produto produto = itemPedido.getProduto();
+        Pedido pedido = pedidoRepository.findById(itemPedido.getPedido().getId()).orElseThrow();
+        Produto produto = produtoRepository.findById(itemPedido.getProduto().getId()).orElseThrow();
 
         if (itemPedido.getQuantidade() > produto.getEstoque()) {
             throw new RuntimeException("Estoque insuficiente");
