@@ -119,7 +119,7 @@ src
 ### Clonar o repositório
 
 ```bash
-git clone https://github.com/SEU-USUARIO/sistema-vendas-api.git
+git clone https://github.com/RyanTelesEngSoft/sistemas_vendas.git
 ```
 
 ### Acessar a pasta do projeto
